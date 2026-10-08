@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "description": "Comprehensive DataGuard verification rule suite across LegacyDB and MigratedDB",
+  "rules": [
+    {
+      "id": "RULE-01-ROWCOUNT",
+      "name": "Orders Table Row Count Verification",
+      "type": "RowCount",
+      "severity": "Critical",
+      "enabled": true,
+      "sourceTable": "dbo.Orders",
+      "targetTable": "dbo.Orders",
+      "tolerancePercent": 0,
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-02-AGGREGATE",
+      "name": "Orders TotalAmount Sum Verification",
+      "type": "ColumnAggregate",
+      "severity": "High",
+      "enabled": true,
+      "sourceTable": "dbo.Orders",
+      "targetTable": "dbo.Orders",
+      "targetColumn": "TotalAmount",
+      "aggregateFunction": "Sum",
+      "tolerance": 0.0,
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-03-CHECKSUM",
+      "name": "OrderItems Product & Pricing Integrity",
+      "type": "Checksum",
+      "severity": "High",
+      "enabled": true,
+      "sourceTable": "dbo.OrderItems",
+      "targetTable": "dbo.OrderItems",
+      "columns": ["OrderItemId", "OrderId", "ProductCode", "Quantity", "UnitPrice", "LineTotal"],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-04-NOTNULL",
+      "name": "Customers Mandatory Email Check",
+      "type": "NotNull",
+      "severity": "High",
+      "enabled": true,
+      "targetTable": "dbo.Customers",
+      "columns": ["Email"],
+      "allowBlank": false,
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-05-DUPLICATEKEY",
+      "name": "Customers Unique CustomerCode Check",
+      "type": "DuplicateKey",
+      "severity": "Critical",
+      "enabled": true,
+      "targetTable": "dbo.Customers",
+      "keyColumns": ["CustomerCode"],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-06-ORPHANKEY",
+      "name": "Orders Customer Foreign Key Check",
+      "type": "OrphanKey",
+      "severity": "Critical",
+      "enabled": true,
+      "targetTable": "dbo.Orders",
+      "childTable": "dbo.Orders",
+      "childColumn": "CustomerId",
+      "parentTable": "dbo.Customers",
+      "parentColumn": "CustomerId",
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-07-VALUECHECK",
+      "name": "Orders Status Domain Check",
+      "type": "ValueCheck",
+      "severity": "Medium",
+      "enabled": true,
+      "targetTable": "dbo.Orders",
+      "targetColumn": "Status",
+      "allowedValues": ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"],
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-08-SCHEMADRIFT",
+      "name": "Customers Schema Consistency",
+      "type": "SchemaDrift",
+      "severity": "Medium",
+      "enabled": true,
+      "sourceTable": "dbo.Customers",
+      "targetTable": "dbo.Customers",
+      "timeoutSeconds": 30
+    },
+    {
+      "id": "RULE-09-CUSTOMSQL",
+      "name": "Invoices Paid with Zero Amount Due Check",
+      "type": "CustomSql",
+      "severity": "Low",
+      "enabled": true,
+      "targetTable": "dbo.Invoices",
+      "customSql": "SELECT InvoiceId, OrderId, AmountDue, IsPaid FROM dbo.Invoices WHERE IsPaid = 1 AND AmountDue = 0",
+      "expectedCount": 0,
+      "timeoutSeconds": 30
+    }
+  ]
+}

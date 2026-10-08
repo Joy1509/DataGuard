@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataGuardDataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=localhost;Initial Catalog=DataGuardDB</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="RunSummaryDataSet">
+      <Query>
+        <DataSourceName>DataGuardDataSource</DataSourceName>
+        <CommandType>StoredProcedure</CommandType>
+        <CommandText>dbo.usp_GetRunSummary</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="RunId"><DataField>RunId</DataField><rd:TypeName>System.Guid</rd:TypeName></Field>
+        <Field Name="Status"><DataField>Status</DataField><rd:TypeName>System.String</rd:TypeName></Field>
+        <Field Name="TotalRules"><DataField>TotalRules</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="PassedRules"><DataField>PassedRules</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="FailedRules"><DataField>FailedRules</DataField><rd:TypeName>System.Int32</rd:TypeName></Field>
+        <Field Name="PassRatePercent"><DataField>PassRatePercent</DataField><rd:TypeName>System.Decimal</rd:TypeName></Field>
+        <Field Name="StartedAtUtc"><DataField>StartedAtUtc</DataField><rd:TypeName>System.DateTime</rd:TypeName></Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>3.5in</Height>
+        <ReportItems>
+          <Textbox Name="ReportTitle">
+            <Top>0.2in</Top>
+            <Left>0.2in</Left>
+            <Width>6.5in</Width>
+            <Height>0.4in</Height>
+            <Value>DataGuard — Migration Data Quality Summary</Value>
+            <Style>
+              <FontSize>16pt</FontSize>
+              <FontWeight>Bold</FontWeight>
+              <Color>#1E3A8A</Color>
+            </Style>
+          </Textbox>
+        </ReportItems>
+      </Body>
+      <Width>8in</Width>
+      <Page>
+        <PageHeight>11in</PageHeight>
+        <PageWidth>8.5in</PageWidth>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+</Report>

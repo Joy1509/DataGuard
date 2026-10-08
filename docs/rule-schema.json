@@ -1,0 +1,131 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DataGuardRules",
+  "description": "Schema definition for DataGuard validation rule suites",
+  "type": "object",
+  "required": ["version", "rules"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": ["1.0", "1.0.0"]
+    },
+    "description": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "type", "severity", "targetTable"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "RowCount",
+              "ColumnAggregate",
+              "Checksum",
+              "NotNull",
+              "DuplicateKey",
+              "OrphanKey",
+              "ValueCheck",
+              "SchemaDrift",
+              "CustomSql"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["Critical", "High", "Medium", "Low"]
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "sourceTable": {
+            "type": "string"
+          },
+          "targetTable": {
+            "type": "string"
+          },
+          "targetColumn": {
+            "type": "string"
+          },
+          "columns": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "keyColumns": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "aggregateFunction": {
+            "type": "string",
+            "enum": ["SUM", "MIN", "MAX", "AVG"]
+          },
+          "tolerance": {
+            "type": "number",
+            "minimum": 0
+          },
+          "tolerancePercent": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "parentTable": {
+            "type": "string"
+          },
+          "parentColumn": {
+            "type": "string"
+          },
+          "childTable": {
+            "type": "string"
+          },
+          "childColumn": {
+            "type": "string"
+          },
+          "allowedValues": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "minValue": {
+            "type": "number"
+          },
+          "maxValue": {
+            "type": "number"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "allowBlank": {
+            "type": "boolean"
+          },
+          "customSql": {
+            "type": "string"
+          },
+          "expectedCount": {
+            "type": "integer"
+          },
+          "filterCondition": {
+            "type": "string"
+          },
+          "timeoutSeconds": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3600,
+            "default": 30
+          }
+        }
+      }
+    }
+  }
+}

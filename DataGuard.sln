@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C11D5E1B-FBCB-44FA-83C3-301C4F37FDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.Core", "src\DataGuard.Core\DataGuard.Core.csproj", "{946C4820-89D1-4C38-A25B-E332921872BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.Infrastructure", "src\DataGuard.Infrastructure\DataGuard.Infrastructure.csproj", "{89810BE8-F0D5-4537-9BB0-D400D9262F47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.Api", "src\DataGuard.Api\DataGuard.Api.csproj", "{44D0EB22-9D0D-4C75-A3E9-38D842237C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.Cli", "src\DataGuard.Cli\DataGuard.Cli.csproj", "{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{73786ADC-B9DA-48C5-92F4-702FA61C5D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.Core.Tests", "tests\DataGuard.Core.Tests\DataGuard.Core.Tests.csproj", "{74614A55-6F46-46FC-BE1B-2C3D0AA8107B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGuard.IntegrationTests", "tests\DataGuard.IntegrationTests\DataGuard.IntegrationTests.csproj", "{489A212D-9631-4F0B-93DC-599E4F74CAD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{946C4820-89D1-4C38-A25B-E332921872BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946C4820-89D1-4C38-A25B-E332921872BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946C4820-89D1-4C38-A25B-E332921872BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946C4820-89D1-4C38-A25B-E332921872BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89810BE8-F0D5-4537-9BB0-D400D9262F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89810BE8-F0D5-4537-9BB0-D400D9262F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89810BE8-F0D5-4537-9BB0-D400D9262F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89810BE8-F0D5-4537-9BB0-D400D9262F47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D0EB22-9D0D-4C75-A3E9-38D842237C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D0EB22-9D0D-4C75-A3E9-38D842237C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D0EB22-9D0D-4C75-A3E9-38D842237C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D0EB22-9D0D-4C75-A3E9-38D842237C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74614A55-6F46-46FC-BE1B-2C3D0AA8107B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74614A55-6F46-46FC-BE1B-2C3D0AA8107B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74614A55-6F46-46FC-BE1B-2C3D0AA8107B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74614A55-6F46-46FC-BE1B-2C3D0AA8107B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489A212D-9631-4F0B-93DC-599E4F74CAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489A212D-9631-4F0B-93DC-599E4F74CAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489A212D-9631-4F0B-93DC-599E4F74CAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489A212D-9631-4F0B-93DC-599E4F74CAD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{946C4820-89D1-4C38-A25B-E332921872BD} = {C11D5E1B-FBCB-44FA-83C3-301C4F37FDC9}
+		{89810BE8-F0D5-4537-9BB0-D400D9262F47} = {C11D5E1B-FBCB-44FA-83C3-301C4F37FDC9}
+		{44D0EB22-9D0D-4C75-A3E9-38D842237C7B} = {C11D5E1B-FBCB-44FA-83C3-301C4F37FDC9}
+		{A7D1C6D4-E4C9-4E3A-A5BF-ADDD252F8C1F} = {C11D5E1B-FBCB-44FA-83C3-301C4F37FDC9}
+		{74614A55-6F46-46FC-BE1B-2C3D0AA8107B} = {73786ADC-B9DA-48C5-92F4-702FA61C5D05}
+		{489A212D-9631-4F0B-93DC-599E4F74CAD9} = {73786ADC-B9DA-48C5-92F4-702FA61C5D05}
+	EndGlobalSection
+EndGlobal

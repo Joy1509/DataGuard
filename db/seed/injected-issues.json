@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "databases": {
+    "source": "LegacyDB",
+    "target": "MigratedDB"
+  },
+  "issues": [
+    {
+      "id": "ISSUE-01",
+      "ruleType": "RowCount",
+      "table": "dbo.Orders",
+      "expectedDiscrepancy": 15,
+      "description": "15 missing orders in MigratedDB (OrderIds 99986..100000 deleted).",
+      "affectedIdentifiers": ["99986..100000"]
+    },
+    {
+      "id": "ISSUE-02",
+      "ruleType": "NotNull",
+      "table": "dbo.Customers",
+      "column": "Email",
+      "expectedDiscrepancy": 25,
+      "description": "25 customers with NULL or whitespace email (CustomerIds 101..125).",
+      "affectedIdentifiers": ["101..125"]
+    },
+    {
+      "id": "ISSUE-03",
+      "ruleType": "DuplicateKey",
+      "table": "dbo.Customers",
+      "column": "CustomerCode",
+      "expectedDiscrepancy": 10,
+      "description": "10 duplicate CustomerCode values reassigned to CUST-0000001 (CustomerIds 201..210).",
+      "affectedIdentifiers": ["201..210"]
+    },
+    {
+      "id": "ISSUE-04",
+      "ruleType": "OrphanKey",
+      "table": "dbo.Orders",
+      "column": "CustomerId",
+      "expectedDiscrepancy": 20,
+      "description": "20 child orders referencing non-existent parent CustomerId 999999 (OrderIds 301..320).",
+      "affectedIdentifiers": ["301..320"]
+    },
+    {
+      "id": "ISSUE-05",
+      "ruleType": "ColumnAggregate",
+      "table": "dbo.Orders",
+      "column": "TotalAmount",
+      "aggregate": "SUM",
+      "expectedDiscrepancy": 1100.00,
+      "description": "11 orders modified with +$100.00 each causing $1,100.00 SUM discrepancy (OrderIds 500..510).",
+      "affectedIdentifiers": ["500..510"]
+    },
+    {
+      "id": "ISSUE-06",
+      "ruleType": "ValueCheck",
+      "table": "dbo.Orders",
+      "column": "Status",
+      "expectedDiscrepancy": 12,
+      "description": "12 orders with illegal status value 'INVALID_STATUS' (OrderIds 701..712).",
+      "affectedIdentifiers": ["701..712"]
+    },
+    {
+      "id": "ISSUE-07",
+      "ruleType": "SchemaDrift",
+      "table": "dbo.Customers",
+      "column": "Phone",
+      "expectedDiscrepancy": 1,
+      "description": "Phone column defined as VARCHAR(20) in MigratedDB instead of VARCHAR(25) in LegacyDB.",
+      "affectedIdentifiers": ["Customers.Phone"]
+    },
+    {
+      "id": "ISSUE-08",
+      "ruleType": "Checksum",
+      "table": "dbo.OrderItems",
+      "column": "UnitPrice",
+      "expectedDiscrepancy": 18,
+      "description": "18 order items have UnitPrice modified without updating LineTotal (OrderItemIds 1001..1018).",
+      "affectedIdentifiers": ["1001..1018"]
+    }
+  ]
+}
